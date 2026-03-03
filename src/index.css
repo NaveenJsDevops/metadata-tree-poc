@@ -1,0 +1,329 @@
+/* ─── Global Styles ───────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-base: #0d0d1a;
+  --bg-surface: #13132b;
+  --bg-raised: #1a1a3a;
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --accent-dim: rgba(99, 102, 241, 0.2);
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --border: rgba(99, 102, 241, 0.25);
+  --radius: 10px;
+  --font: "Inter", system-ui, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── App Shell ───────────────────────────────────────────────────────────── */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── Toolbar ─────────────────────────────────────────────────────────────── */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #0f0f2a 0%, #151530 100%);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.toolbar__brand {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-light);
+  letter-spacing: -0.02em;
+  margin-right: 8px;
+}
+
+.toolbar__brand span {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.toolbar__sep {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+.toolbar__spacer {
+  flex: 1;
+}
+
+/* ─── Toolbar Buttons ─────────────────────────────────────────────────────── */
+
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font);
+  padding: 6px 12px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--accent-dim);
+  color: var(--accent-light);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.tb-btn:hover:not(:disabled) {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: var(--accent-light);
+  color: #fff;
+}
+
+.tb-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.tb-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.tb-btn--danger {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.tb-btn--danger:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #f87171;
+  color: #fff;
+}
+
+.tb-btn--success {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.tb-btn--success:hover:not(:disabled) {
+  background: rgba(34, 197, 94, 0.25);
+  border-color: #4ade80;
+  color: #fff;
+}
+
+/* ─── Status pill ─────────────────────────────────────────────────────────── */
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.status-pill.saving {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.status-pill.saved {
+  color: var(--success);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-dot.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ─── Flow Container ──────────────────────────────────────────────────────── */
+
+.flow-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── React Flow overrides ────────────────────────────────────────────────── */
+
+.react-flow__background {
+  background: var(--bg-base);
+}
+
+.react-flow__minimap {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.react-flow__controls {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.react-flow__controls button {
+  background: var(--bg-surface) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+  padding: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.react-flow__controls button:hover {
+  background: var(--accent-dim) !important;
+  color: var(--accent-light) !important;
+}
+
+.react-flow__edge-path {
+  stroke: #6366f1;
+  stroke-width: 2;
+}
+
+/* ─── Stats Bar ───────────────────────────────────────────────────────────── */
+
+.stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 5px 20px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.stats-bar strong {
+  color: var(--text-secondary);
+}
+
+/* ─── Drop Highlight ──────────────────────────────────────────────────────── */
+
+.drop-target-highlight {
+  outline: 2px dashed #818cf8 !important;
+  outline-offset: 3px;
+}
+
+/* ─── Loading Overlay ─────────────────────────────────────────────────────── */
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 13, 26, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 999;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ─── Toast ───────────────────────────────────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: slideIn 0.25s ease;
+}
+
+.toast--success { border-color: rgba(34, 197, 94, 0.5); }
+.toast--error   { border-color: rgba(239, 68, 68, 0.5); }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Stats Bar hint ─────────────────────────────────────────────────────── */
+
+.stats-bar__hint {
+  margin-left: auto;
+  color: var(--text-muted);
+}

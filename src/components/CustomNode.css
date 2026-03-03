@@ -1,0 +1,183 @@
+/* ─── Custom Node Styles ──────────────────────────────────────────────────── */
+
+.custom-node {
+  background: linear-gradient(145deg, #1e1b4b 0%, #1a1a2e 100%);
+  border: 1.5px solid #4f46e5;
+  border-radius: 12px;
+  padding: 12px 14px;
+  width: 240px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.2), 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  font-family: "Inter", system-ui, sans-serif;
+  cursor: default;
+  box-sizing: border-box;
+}
+
+.custom-node:hover {
+  box-shadow: 0 6px 32px rgba(99, 102, 241, 0.35), 0 2px 8px rgba(0, 0, 0, 0.5);
+  border-color: #818cf8;
+}
+
+.custom-node.selected {
+  border-color: #a5b4fc;
+  box-shadow: 0 0 0 2px rgba(165, 180, 252, 0.4), 0 6px 32px rgba(99, 102, 241, 0.35);
+}
+
+/* ─── Node Header ─────────────────────────────────────────────────────────── */
+
+.custom-node__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom-node__collapse-btn {
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 6px;
+  color: #a5b4fc;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 10px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+  padding: 0;
+}
+
+.custom-node__collapse-btn:hover {
+  background: rgba(99, 102, 241, 0.35);
+  color: #fff;
+}
+
+.custom-node__collapse-btn.no-children {
+  visibility: hidden;
+}
+
+/* ─── Label Input ─────────────────────────────────────────────────────────── */
+
+.custom-node__label-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(99, 102, 241, 0.3);
+  color: #e0e7ff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 2px 4px;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 0; /* flex item — expands to fill */
+  min-width: 0;
+}
+
+.custom-node__label-input:focus {
+  border-bottom-color: #818cf8;
+  color: #fff;
+}
+
+/* ─── Node Meta ───────────────────────────────────────────────────────────── */
+
+.custom-node__meta {
+  font-size: 10px;
+  color: #6366f1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ─── Actions Row ─────────────────────────────────────────────────────────── */
+
+.custom-node__actions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.custom-node__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: 6px;
+  padding: 5px 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.custom-node__btn:active {
+  transform: scale(0.95);
+}
+
+.custom-node__btn--add {
+  background: rgba(79, 70, 229, 0.25);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #a5b4fc;
+}
+
+.custom-node__btn--add:hover {
+  background: rgba(99, 102, 241, 0.4);
+  border-color: #818cf8;
+  color: #fff;
+}
+
+.custom-node__btn--delete {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.custom-node__btn--delete:hover {
+  background: rgba(239, 68, 68, 0.28);
+  border-color: #f87171;
+  color: #fff;
+}
+
+/* ─── Handle overrides ────────────────────────────────────────────────────── */
+
+.custom-node .react-flow__handle {
+  background: #6366f1;
+  border: 2px solid #1e1b4b;
+  width: 10px;
+  height: 10px;
+}
+
+.custom-node .react-flow__handle-top {
+  top: -5px;
+}
+
+.custom-node .react-flow__handle-bottom {
+  bottom: -5px;
+}
+
+/* ─── Collapsed badge ─────────────────────────────────────────────────────── */
+
+.custom-node__collapsed-badge {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4f46e5;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
